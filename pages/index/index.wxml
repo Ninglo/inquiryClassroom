@@ -1,0 +1,14 @@
+<view class="down">
+  <radio-group bindchange="radioChange">
+    <view wx:for="{{dL}}">
+      <radio value="{{item.room}}" checked="true"/>{{item.time}}
+    </view>
+  </radio-group>
+</view>
+<view class='placeholder-view'></view>
+<view class="top">
+  <view class="border"></view>
+  <text style="position:fixed; bottom:0;width: 750rpx;">
+    {{text}}
+  </text>
+</view>

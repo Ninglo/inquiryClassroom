@@ -18,7 +18,7 @@
 <view class='placeholder-view'></view>
 <view class="top">
   <view class="border"></view>
-  <text style="position:fixed; bottom:0;width: 750rpx;">
+  <text style="position:fixed;word-wrap: break-word;word-break: break-all;white-space: pre-line;">
     {{text}}
   </text>
 </view>

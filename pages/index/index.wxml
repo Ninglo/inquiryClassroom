@@ -1,9 +1,19 @@
 <view class="down">
-  <radio-group bindchange="radioChange">
-    <view wx:for="{{dL}}">
-      <radio value="{{item.room}}" checked="true"/>{{item.time}}
+  <view wx:for="{{dateIndex.index}}">
+    <view class="dateView" bindtap="showDateDetail" data-date="{{item}}">
+      {{item}}
     </view>
-  </radio-group>
+    <view style="width: 100%; height: 5px;"></view>
+    <view wx:if="{{showDate === item}}">
+      <radio-group bindchange="radioChange" data-timeitems="{{timeIndex[item]}}">
+        <view wx:for="{{timeIndex[item]}}" wx:key="index" wx:for-item="time">
+          <radio value="{{time}}" />{{time}}
+          <view style="width: 100%; height: 3px;"></view>
+        </view>
+      </radio-group>
+    </view>
+    <view style="width: 100%; height: 5px;"></view>
+  </view>
 </view>
 <view class='placeholder-view'></view>
 <view class="top">

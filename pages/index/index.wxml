@@ -18,7 +18,13 @@
 <view class='placeholder-view'></view>
 <view class="top">
   <view class="border"></view>
-  <text style="position:fixed;word-wrap: break-word;word-break: break-all;white-space: pre-line;">
-    {{text}}
-  </text>
+  <view>正在使用的教室:</view>
+  <view style="position:fixed;word-wrap: break-word;word-break: break-all;white-space: pre-line;">
+    D:
+    {{roomD != 0 ? roomD : 'null'}}
+    E:
+    {{roomE != 0 ? roomE : 'null'}}
+    Other:
+    {{roomOther != 0 ? roomOther : 'null'}}
+  </view>
 </view>

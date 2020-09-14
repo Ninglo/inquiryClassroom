@@ -48,6 +48,7 @@ def saveData(roomUsage):
             indexList.append(key)
             formatUsageDic[key] = sorted(list(set(value)))
         # f.write(roomUsageJSON)
+        formatUsageDic['name'] = 'classroomData'
         f.write(json.dumps(formatUsageDic))
         # print(indexList)
 
@@ -62,12 +63,17 @@ def saveData(roomUsage):
         except KeyError:
             dateIndex.append(dateByMouthDay)
             timeMap[dateByMouthDay] = [date]
+    dateDic = {
+        'index': dateIndex,
+        'name': 'dateIndex'
+    }
+    timeMap['name'] = 'timeIndex'
 
-    with open('timeIndex', 'w+', encoding='utf-8') as f:
+    with open('timeIndex.json', 'w+', encoding='utf-8') as f:
         f.write(str(timeMap).replace('\'', '\"'))
 
-    with open('dateIndex', 'w+', encoding='utf-8') as f:
-        f.write(str(dateIndex).replace('\'', '\"'))
+    with open('dateIndex.json', 'w+', encoding='utf-8') as f:
+        f.write(str(dateDic).replace('\'', '\"'))
 
 def encodeFile(filePath):
     file_data = ""

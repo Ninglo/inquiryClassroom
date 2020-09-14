@@ -1,3 +1,11 @@
-# inquiryClassroom
+# InquiryClassroom
 
-没啥说的, 想用随便用哈哈哈哈哈哈
+## 使用说明
+
+/dataProcessScript 文件夹
+
+```
+py read.py
+```
+
+将三个导出的JSON文件上传至云函数的 'inquiry' collection

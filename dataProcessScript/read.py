@@ -4,13 +4,22 @@ import json
 
 def main():
     roomUsage = {}
-    roomUsage = readFile('ci.xls', roomUsage)
-    roomUsage = readFile('gz.xlsx', roomUsage)
-    saveData(roomUsage, 'data')
-    encodeFile('data')
+    """
+        roomUsage = {
+            date: classRoomName
+        }
+    """
+    roomUsage = readFile('examRoomUsage.xls', roomUsage)
+    roomUsage = readFile('gaozhiData.xlsx', roomUsage)
+    saveData(roomUsage)
+    encodeFile('classroomData.json')
 
 
 def readFile(filePath, roomUsage):
+    """
+        * filePath (str) 文件的相对 / 绝对路径
+        * roomUsage (dict) 存储
+    """
     book = xlrd.open_workbook(filePath)
     sheetNum = book.nsheets
 
@@ -31,26 +40,34 @@ def readUsageBySheet(sheet, roomUsage):
     return roomUsage
 
 
-def saveData(roomUsage, name):
-    with open('{name}'.format(name=name), 'w+', encoding='utf-8') as f:
-        #roomUsageList = []
+def saveData(roomUsage):
+    with open('classroomData.json', 'w+', encoding='utf-8') as f:
         formatUsageDic = {}
         indexList = []
         for key, value in roomUsage.items():
             indexList.append(key)
             formatUsageDic[key] = sorted(list(set(value)))
-        """
-            dic = {
-                "time": key,
-                "room": sorted(list(set(value)))
-            }
-            roomUsageList.append(dic)
-        roomUsageJSON = json.dumps(roomUsageList)
-        """
         # f.write(roomUsageJSON)
         f.write(json.dumps(formatUsageDic))
-        print(indexList)
+        # print(indexList)
 
+    timeMap = {}
+    dateIndex = []
+
+    for date in roomUsage.keys():
+        try:
+            dayEnd = date.find('日') + 1
+            dateByMouthDay = date[:dayEnd]
+            timeMap[dateByMouthDay].append(date)
+        except KeyError:
+            dateIndex.append(dateByMouthDay)
+            timeMap[dateByMouthDay] = [date]
+
+    with open('timeIndex', 'w+', encoding='utf-8') as f:
+        f.write(str(timeMap).replace('\'', '\"'))
+
+    with open('dateIndex', 'w+', encoding='utf-8') as f:
+        f.write(str(dateIndex).replace('\'', '\"'))
 
 def encodeFile(filePath):
     file_data = ""

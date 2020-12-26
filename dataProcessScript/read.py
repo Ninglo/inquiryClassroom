@@ -9,8 +9,8 @@ def main():
             date: classRoomName
         }
     """
-    roomUsage = readFile('examRoomUsage.xls', roomUsage)
-    roomUsage = readFile('gaozhiData.xlsx', roomUsage)
+    roomUsage = readFile('1.xls', roomUsage)
+    roomUsage = readFile('2.xlsx', roomUsage)
     saveData(roomUsage)
     encodeFile('classroomData.json')
 
@@ -34,9 +34,9 @@ def readUsageBySheet(sheet, roomUsage):
     scv = sheet.cell_value
     for row in range(1, sheet.nrows):
         try:
-            roomUsage[scv(rowx=row, colx=0)].append(scv(rowx=row, colx=10))
+            roomUsage[scv(rowx=row, colx=0)].append(scv(rowx=row, colx=9))
         except KeyError:
-            roomUsage[scv(rowx=row, colx=0)] = [scv(rowx=row, colx=10)]
+            roomUsage[scv(rowx=row, colx=0)] = [scv(rowx=row, colx=9)]
     return roomUsage
 
 
@@ -64,7 +64,7 @@ def saveData(roomUsage):
             dateIndex.append(dateByMouthDay)
             timeMap[dateByMouthDay] = [date]
     dateDic = {
-        'index': dateIndex,
+        'index': sorted(dateIndex),
         'name': 'dateIndex'
     }
     timeMap['name'] = 'timeIndex'
@@ -74,6 +74,7 @@ def saveData(roomUsage):
 
     with open('dateIndex.json', 'w+', encoding='utf-8') as f:
         f.write(str(dateDic).replace('\'', '\"'))
+
 
 def encodeFile(filePath):
     file_data = ""

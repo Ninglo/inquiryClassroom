@@ -19,7 +19,7 @@
 <view class="top">
   <view class="border"></view>
   <view>正在使用的教室:</view>
-  <view style="position:fixed;word-wrap: break-word;word-break: break-all;white-space: pre-line;">
+  <view style="position:fixed;word-wrap: break-word;word-break: break-all;white-space: pre-line;overflow: auto;height: 37%;">
     D:
     {{roomD != 0 ? roomD : 'null'}}
     E:

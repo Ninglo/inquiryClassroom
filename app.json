@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/examInquiry/examInquiry"
+    "pages/examInquiry/examInquiry",
+    "pages/questionquery/questionquery"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,6 +15,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "教室查询"
+      },
+      {
+        "pagePath": "pages/questionquery/questionquery",
+        "text": "试题查询"
       },
       {
         "pagePath": "pages/examInquiry/examInquiry",

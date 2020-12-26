@@ -1,0 +1,10 @@
+.divLine{
+ background: white;
+ width: 100%;
+ height: 15rpx;
+}
+.divLine0{
+ background: white;
+ width: 100%;
+ height: 5rpx;
+}

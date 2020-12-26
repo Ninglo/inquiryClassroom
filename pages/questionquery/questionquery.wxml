@@ -1,0 +1,13 @@
+<view style="display:flex; align-items:center;">
+  <input bindinput="messageChange" style="flex-grow:1;padding-left:10px;" placeholder="在此输入考试题目"></input>
+  <button bindtap="query" style="flex-grow:0;">Query</button>
+</view>
+<view class="divLine0"></view>
+<view>
+  <view wx:for="{{questions}}" wx:for-item="question">
+    <view wx:for="{{question}}" wx:for-item="value">
+      {{value}}
+    </view>
+    <view class="divLine"></view>
+  </view>
+</view>
